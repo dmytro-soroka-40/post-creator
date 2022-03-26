@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { createPost, showAlert } from '../../redux/actions';
 import Alert from '../Alert/Alert';
+import Button from '../Button/Button';
 
 const PostForm = ({ showAlert, createPost, alert }) => {
   const [title, setTitle] = useState('');
@@ -31,37 +32,40 @@ const PostForm = ({ showAlert, createPost, alert }) => {
 
   return (
     <form
+      className="form"
       onSubmit={(e) => {
         submitHandler(e);
       }}
     >
       {alert && <Alert text={alert} />}
 
-      <div className="form-group">
-        <label htmlFor="title">Title post</label>
+      <div className="form__input-wrapper">
+        <label htmlFor="title" className="form__label">
+          Title:
+        </label>
         <input
           type="text"
           value={title}
-          className="form-control"
+          className="form__input"
           id="title"
           onChange={(e) => {
             setTitle(e.target.value);
           }}
         />
-        <label htmlFor="body">Body post</label>
-        <input
+        <label htmlFor="body" className="form__label">
+          Body:
+        </label>
+        <textarea
           type="text"
           value={body}
-          className="form-control"
+          className="form__input form__input_textarea"
           id="body"
           onChange={(e) => {
             setBody(e.target.value);
           }}
-        />
+        ></textarea>
       </div>
-      <button className="btn btn-success mt-2" type="submit">
-        Create
-      </button>
+      <Button text={'Add post'} />
     </form>
   );
 };

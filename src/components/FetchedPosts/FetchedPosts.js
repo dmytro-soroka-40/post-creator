@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchPosts } from '../../redux/actions';
 import Post from '../Post/Post';
 import Loader from '../Loader/Loader';
+import Button from '../Button/Button';
 
 const FetchedPosts = () => {
   const dispatch = useDispatch();
@@ -15,14 +16,7 @@ const FetchedPosts = () => {
 
   if (!posts.length) {
     return (
-      <button
-        className="btn btn-primary"
-        onClick={() => {
-          dispatch(fetchPosts());
-        }}
-      >
-        Download
-      </button>
+      <Button text={'Async post'} onClick={() => dispatch(fetchPosts())} />
     );
   }
 

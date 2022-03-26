@@ -4,7 +4,7 @@ import Post from '../Post/Post';
 
 const Posts = ({ syncPosts }) => {
   if (!syncPosts.length) {
-    return <h3 className="text-center">No posts!</h3>;
+    return <h3 className="post-creator__error">No posts!</h3>;
   }
 
   return syncPosts.map((post) => {
